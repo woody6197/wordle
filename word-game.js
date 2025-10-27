@@ -1,6 +1,10 @@
 const answerLegnth = 5;
 const rounds = 6;
 
+const wordapi = await fetch("https://words.dev-apis.com/word-of-the-day");
+const word = word.toUpperCase();
+
+
 // checks if a character is a letter
 function isLetter(char) {
   return char.length === 1 && char.match(/[a-z]/i);
