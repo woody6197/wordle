@@ -39,3 +39,22 @@ body {
     font-family: 'Arial', sans-serif;
     text-transform: uppercase;
 }
+
+.correct {
+  background-color: darkgreen;
+  color: white;
+}
+
+.close {
+  background-color: yellow;
+  color: white;
+}
+
+.wrong {
+  background-color: red;
+  color: white; 
+}
+
+.invalid {
+  animation: flash 1s;
+}
