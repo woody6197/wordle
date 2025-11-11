@@ -16,7 +16,7 @@ body {
   color: #fff;
   text-align: center;
   padding: 8px 0;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Bungee Shade', cursive;
   z-index: 1000;
 }
 
@@ -29,7 +29,7 @@ body {
   color: white;
   text-align: center;
   padding: 20px 0;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Bungee Shade', cursive;
 }
 
 .boxes-container {
@@ -55,7 +55,7 @@ body {
     font-size: 2em;
     text-align: center;
     line-height: 60px;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Bungee Shade', cursive;
     text-transform: uppercase;
 }
 
@@ -132,6 +132,7 @@ body {
   font-size: 80px;
   padding: 40px;
   position: relative;
+  /* transform: rotate(350deg); */
 }
 
 .fun-zone span {
