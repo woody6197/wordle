@@ -73,7 +73,7 @@ body {
 }
 
 .invalid {
-  animation: flash 0.5s;
+  animation: flash 0.8s;
 }
 
 @keyframes flash {
