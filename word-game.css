@@ -106,14 +106,12 @@ body {
   width: 30%;
   height: auto;
   padding: 10px;
-  font-family: 'Arial', sans-serif;
 }
 
 .right-box {
   width: 30%;
   height: auto;
   padding: 10px;
-  font-family: 'Arial', sans-serif;
 }
 
 .body-flex {
@@ -133,5 +131,23 @@ body {
   color: yellowgreen;
   font-size: 80px;
   padding: 40px;
-  
+  position: relative;
+}
+
+.fun-zone span {
+  position: absolute;
+  left: 40px;
+  top: 40px;
+}
+
+.left-box .fun-zone span {
+  position: absolute;
+  left: 40px;
+  top: 40px;
+}
+
+.right-box .fun-zone span {
+  position: absolute;
+  left: 40px;
+  top: 40px;
 }

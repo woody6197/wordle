@@ -221,4 +221,171 @@ function makeMap(array) {
   return obj;
 }
 
+// Text morphing animation in left box
+const elts = {
+    text1: document.getElementById("text1"),
+    text2: document.getElementById("text2")
+};
+
+const texts = [
+    "Welcome",
+    "to",
+    "Woody's",
+    "Wordle",
+    "Game!"
+];
+
+const morphTime = 1;
+const cooldownTime = 0.25;
+
+let textIndex = texts.length - 1;
+let time = new Date();
+let morph = 0;
+let cooldown = cooldownTime;
+
+elts.text1.textContent = texts[textIndex % texts.length];
+elts.text2.textContent = texts[(textIndex + 1) % texts.length];
+
+function doMorph() {
+    morph -= cooldown;
+    cooldown = 0;
+
+    let fraction = morph / morphTime;
+
+    if (fraction > 1) {
+        cooldown = cooldownTime;
+        fraction = 1;
+    }
+
+    setMorph(fraction);
+}
+
+function setMorph(fraction) {
+    elts.text2.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
+    elts.text2.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
+
+    fraction = 1 - fraction;
+    elts.text1.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
+    elts.text1.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
+
+    elts.text1.textContent = texts[textIndex % texts.length];
+    elts.text2.textContent = texts[(textIndex + 1) % texts.length];
+}
+
+function doCooldown() {
+    morph = 0;
+
+    elts.text2.style.filter = "";
+    elts.text2.style.opacity = "100%";
+
+    elts.text1.style.filter = "";
+    elts.text1.style.opacity = "0%";
+}
+
+function animate() {
+    requestAnimationFrame(animate);
+
+    let newTime = new Date();
+    let shouldIncrementIndex = cooldown > 0;
+    let dt = (newTime - time) / 1000;
+    time = newTime;
+
+    cooldown -= dt;
+
+    if (cooldown <= 0) {
+        if (shouldIncrementIndex) {
+            textIndex++;
+        }
+
+        doMorph();
+    } else {
+        doCooldown();
+    }
+}
+
+// Text morphing animation in right box
+const rightelts = {
+    text3: document.getElementById("text3"),
+    text4: document.getElementById("text4")
+};
+
+const righttexts = [
+    "Welcome",
+    "to",
+    "Woody's",
+    "Wordle",
+    "Game!"
+];
+
+const rightmorphTime = 1;
+const rightcooldownTime = 0.25;
+
+let righttextIndex = righttexts.length - 1;
+let righttime = new Date();
+let rightmorph = 0;
+let rightcooldown = rightcooldownTime;
+
+rightelts.text3.textContent = righttexts[righttextIndex % righttexts.length];
+rightelts.text4.textContent = righttexts[(righttextIndex + 1) % righttexts.length];
+
+function rightdoMorph() {
+    rightmorph -= rightcooldown;
+    rightcooldown = 0;
+
+    let rightfraction = rightmorph / rightmorphTime;
+
+    if (rightfraction > 1) {
+        rightcooldown = rightcooldownTime;
+        rightfraction = 1;
+    }
+
+    rightsetMorph(rightfraction);
+}
+
+function rightsetMorph(rightfraction) {
+    rightelts.text4.style.filter = `blur(${Math.min(8 / rightfraction - 8, 100)}px)`;
+    rightelts.text4.style.opacity = `${Math.pow(rightfraction, 0.4) * 100}%`;
+
+    rightfraction = 1 - rightfraction;
+    rightelts.text3.style.opacity = `${Math.pow(rightfraction, 0.4) * 100}%`;
+    rightelts.text3.style.filter = `blur(${Math.min(8 / rightfraction - 8, 100)}px)`;
+
+    rightelts.text3.textContent = righttexts[righttextIndex % righttexts.length];
+    rightelts.text4.textContent = righttexts[(righttextIndex + 1) % righttexts.length];
+}
+
+function rightdoCooldown() {
+    rightmorph = 0;
+
+    rightelts.text4.style.filter = "";
+    rightelts.text4.style.opacity = "100%";
+
+    rightelts.text3.style.filter = "";
+    rightelts.text3.style.opacity = "0%";
+}
+
+function rightanimate() {
+    requestAnimationFrame(rightanimate);
+
+    let rightnewTime = new Date();
+    let rightshouldIncrementIndex = rightcooldown > 0;
+    let dt = (rightnewTime - righttime) / 1000;
+    righttime = rightnewTime;
+
+    rightcooldown -= dt;
+
+    if (rightcooldown <= 0) {
+        if (rightshouldIncrementIndex) {
+            righttextIndex++;
+        }
+
+        rightdoMorph();
+    } else {
+        rightdoCooldown();
+    }
+}
+
+animate();
+rightanimate();
+
 init();
