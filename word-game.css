@@ -7,6 +7,23 @@ body {
   margin: 0;
 }
 
+.info-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #333;
+  color: #fff;
+  text-align: center;
+  padding: 8px 0;
+  font-family: 'Arial', sans-serif;
+  z-index: 1000;
+}
+
+.hidden {
+  display: none;
+}
+
 .header {
   background-color: #2e8b57;
   color: white;
@@ -56,5 +73,29 @@ body {
 }
 
 .invalid {
-  animation: flash 1s;
+  animation: flash 0.5s;
+}
+
+@keyframes flash {
+  0%, 100% {
+    background-color: inherit;
+  }
+  50% {
+    background-color: #ff6b6b;
+  }
+}
+
+.correct {
+  background-color: darkgreen;
+  color: white;
+}
+
+.close {
+  background-color: yellow;
+  color: white;
+}
+
+.wrong {
+  background-color: lightgray;
+  color: white; 
 }
