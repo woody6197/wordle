@@ -220,7 +220,7 @@ function makeMap(array) {
   }
   return obj;
 }
-
+ 
 // Text morphing animation in left box
 const elts = {
     text1: document.getElementById("text1"),

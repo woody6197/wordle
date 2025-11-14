@@ -8,6 +8,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Ewert&display=swap" rel="stylesheet">
     </head>
         <body>
             <div>
@@ -22,46 +23,106 @@
                         </div>
                     </div>
                     <div class="boxes-container">
+                        <label class="sr-only" for="row0">Guess 1 of 6</label>
                         <div id="row0" class="row">
+                            <label class="sr-only" for="box0">Letter 1 of 5</label>
                             <input id="box0" class="box" maxlength="1" />
+
+                            <label class="sr-only" for="box1">Letter 2 of 5</label>
                             <input id="box1" class="box" maxlength="1"/>
+                                
+                            <label class="sr-only" for="box2">Letter 3 of 5</label>
                             <input id="box2" class="box" maxlength="1"/>
+
+                            <label class="sr-only" for="box3">Letter 4 of 5</label>
                             <input id="box3" class="box" maxlength="1"/>
+                                
+                            <label class="sr-only" for="box4">Letter 5 of 5</label>
                             <input id="box4" class="box" maxlength="1"/>
                         </div>
+                        <label class="sr-only" for="row1">Guess 2 of 6</label>
                         <div id="row1" class="row">
+                            <label class="sr-only" for="box5">Letter 1 of 5</label>
                             <input id="box5" class="box" maxlength="1"/>
+
+                            <label class="sr-only" for="box6">Letter 2 of 5</label>
                             <input id="box6" class="box" maxlength="1"/>
+
+                            <label class="sr-only" for="box7">Letter 3 of 5</label>
                             <input id="box7" class="box" maxlength="1"/>
+
+                            <label class="sr-only" for="box8">Letter 4 of 5</label>
                             <input id="box8" class="box" maxlength="1"/>
+                            
+                            <label class="sr-only" for="box9">Letter 5 of 5</label>
                             <input id="box9" class="box" maxlength="1"/>
                         </div>
+                        <label class="sr-only" for="row2">Guess 3 of 6</label>
                         <div id="row2" class="row">
+                            <label class="sr-only" for="box10">Letter 1 of 5</label>
                             <input id="box10" class="box" maxlength="1"/>
+                            
+                            <label class="sr-only" for="box11">Letter 2 of 5</label>
                             <input id="box11" class="box" maxlength="1"/>
+                           
+                            <label class="sr-only" for="box12">Letter 3 of 5</label>
                             <input id="box12" class="box" maxlength="1"/>
+                            
+                            <label class="sr-only" for="box13">Letter 4 of 5</label>
                             <input id="box13" class="box" maxlength="1"/>
+                            
+                            <label class="sr-only" for="box14">Letter 5 of 5</label>
                             <input id="box14" class="box" maxlength="1"/>
                         </div>
+                        <label class="sr-only" for="row3">Guess 4 of 6</label>
                         <div id="row3" class="row">
+                            <label class="sr-only" for="box15">Letter 1 of 5</label>
                             <input id="box15" class="box" maxlength="1"/>
+
+                            <label class="sr-only" for="box16">Letter 2 of 5</label>
                             <input id="box16" class="box" maxlength="1"/>
+
+                            <label class="sr-only" for="box17">Letter 3 of 5</label>
                             <input id="box17" class="box" maxlength="1"/>
+
+                            <label class="sr-only" for="box18">Letter 4 of 5</label>
                             <input id="box18" class="box" maxlength="1"/>
+
+                            <label class="sr-only" for="box19">Letter 5 of 5</label>
                             <input id="box19" class="box" maxlength="1"/>
                         </div>
+                        <label class="sr-only" for="row4">Guess 5 of 6</label>
                         <div id="row4" class="row">
+                            <label class="sr-only" for="box20">Letter 1 of 5</label>
                             <input id="box20" class="box" maxlength="1"/>
+                            
+                            <label class="sr-only" for="box21">Letter 2 of 5</label>
                             <input id="box21" class="box" maxlength="1"/>
+                            
+                            <label class="sr-only" for="box22">Letter 3 of 5</label>
                             <input id="box22" class="box" maxlength="1"/>
+
+                            <label class="sr-only" for="box23">Letter 4 of 5</label>
                             <input id="box23" class="box" maxlength="1"/>
+                            
+                            <label class="sr-only" for="box24">Letter 5 of 5</label>
                             <input id="box24" class="box" maxlength="1"/>
                         </div>
+                        <label class="sr-only" for="row5">Guess 6 of 6. Final guess.</label>
                         <div id="row5" class="row">
+                            <label class="sr-only" for="box25">Letter 1 of 5</label>
                             <input id="box25" class="box" maxlength="1"/>
+                            
+                            <label class="sr-only" for="box26">Letter 2 of 5</label>
                             <input id="box26" class="box" maxlength="1"/>
+                            
+                            <label class="sr-only" for="box27">Letter 3 of 5</label>
                             <input id="box27" class="box" maxlength="1"/>
+                            
+                            <label class="sr-only" for="box28">Letter 4 of 5</label>
                             <input id="box28" class="box" maxlength="1"/>
+                            
+                            <label class="sr-only" for="box29">Letter 5 of 5</label>
                             <input id="box29" class="box" maxlength="1"/>
                         </div>
                     </div>
@@ -72,6 +133,17 @@
                         </div>
                     </div>
                 </div>
+                <svg id="filters">
+                    <defs>
+                        <filter id="threshold">
+                            <feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0
+                                0 1 0 0 0
+                                0 0 1 0 0
+                                0 0 0 200 -100"
+                            />
+                        </filter>
+                    </defs>
+                </svg>
             </div>
             <script src="./word-game.js"></script>
         </body>

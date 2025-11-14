@@ -59,21 +59,6 @@ body {
     text-transform: uppercase;
 }
 
-.correct {
-  background-color: darkgreen;
-  color: white;
-}
-
-.close {
-  background-color: yellow;
-  color: white;
-}
-
-.wrong {
-  background-color: red;
-  color: white; 
-}
-
 .invalid {
   animation: flash 0.8s;
 }
@@ -94,24 +79,26 @@ body {
 
 .close {
   background-color: yellow;
-  color: white;
+  color: black;
 }
 
 .wrong {
   background-color: lightgray;
-  color: white; 
+  color: black; 
 }
 
 .left-box {
   width: 30%;
   height: auto;
   padding: 10px;
+  filter: url(#threshold) blur(0.6px);
 }
 
 .right-box {
   width: 30%;
   height: auto;
   padding: 10px;
+  filter: url(#threshold) blur(0.6px);
 }
 
 .body-flex {
@@ -126,8 +113,15 @@ body {
   font-style: normal;
 }
 
+.ewert-regular {
+  font-family: "Ewert", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
 .fun-zone {
-  font-family: 'Bungee Shade', cursive;
+  font-family: 'Ewert', cursive;
   color: yellowgreen;
   font-size: 80px;
   padding: 40px;
@@ -151,4 +145,14 @@ body {
   position: absolute;
   left: 40px;
   top: 40px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  border: 0;
 }
