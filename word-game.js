@@ -6,6 +6,8 @@ loadingDiv.classList.add("info-bar");
 loadingDiv.textContent = "Loading...";
 document.body.appendChild(loadingDiv);
 const ariaLiveRegion = document.getElementById("aria-live-region");
+const revealAnswerBtn = document.getElementById("reveal-answer-btn");
+const gameMessage = document.getElementById("game-message");
 
 // the state for the app
 let currentRow = 0;
@@ -103,6 +105,15 @@ async function init() {
   isLoading = true;
   setLoading(isLoading);
 
+  // Hide reveal button and clear message
+  if (revealAnswerBtn) {
+    revealAnswerBtn.style.display = "none";
+  }
+  if (gameMessage) {
+    gameMessage.textContent = "";
+    gameMessage.className = "game-message";
+  }
+
   // clear all boxes and reset classes
   boxes.forEach((box, index) => {
     box.value = "";
@@ -176,7 +187,6 @@ async function commit() {
     let allRight = true;
     const feedback = [];
 
-    // First pass: mark correct letters
     for (let i = 0; i < ANSWER_LENGTH; i++) {
       if (guessParts[i] === wordParts[i]) {
         boxes[currentRow * ANSWER_LENGTH + i].classList.add("correct");
@@ -207,6 +217,7 @@ async function commit() {
       }
     }
     
+    // Announce feedback to screen reader
     const guessNum = currentRow + 1;
     const feedbackText = `Guess ${guessNum} of ${ROUNDS}: ${feedback.join(". ")}.`;
     announceToScreenReader(feedbackText);
@@ -219,15 +230,17 @@ async function commit() {
     }
     
     if (allRight) {
-      announceToScreenReader(`Congratulations! You won in ${guessNum} guess${guessNum === 1 ? '' : 'es'}! The word was ${word}.`);
-      alert("you win");
+      announceToScreenReader(`Congratulations! You won in ${guessNum} guess${guessNum === 1 ? '' : 'es'}!`);
+      showGameMessage("win", "You Win!");
       done = true;
       boxes.forEach(box => box.disabled = true);
+      showRevealButton();
     } else if (currentRow === ROUNDS) {
-      announceToScreenReader(`Game over. You did not guess the word. The word was ${word}.`);
-      alert(`you lose, the word was ${word}`);
+      announceToScreenReader(`Game over. You did not guess the word.`);
+      showGameMessage("lose", "You lose");
       done = true;
       boxes.forEach(box => box.disabled = true);
+      showRevealButton();
     } else {
       // Focus on first box of next row
       boxes[currentRow * ANSWER_LENGTH].focus();
@@ -249,6 +262,7 @@ function markInvalidWord() {
   for (let i = 0; i < ANSWER_LENGTH; i++) {
     const box = boxes[currentRow * ANSWER_LENGTH + i];
     box.classList.remove("invalid");
+    // Reset aria-label when invalid
     const rowNum = currentRow + 1;
     const letterNum = i + 1;
     const letter = box.value || "";
@@ -278,6 +292,19 @@ function announceToScreenReader(message) {
   setTimeout(() => {
     ariaLiveRegion.textContent = message;
   }, 100);
+}
+
+function showGameMessage(type, message) {
+  if (gameMessage) {
+    gameMessage.textContent = message;
+    gameMessage.className = `game-message ${type}`;
+  }
+}
+
+function showRevealButton() {
+  if (revealAnswerBtn) {
+    revealAnswerBtn.style.display = "inline-block";
+  }
 }
 
 function makeMap(array) {
@@ -466,5 +493,16 @@ if (newGameBtn) {
   newGameBtn.addEventListener("click", async () => {
     await init();
     announceToScreenReader("New game started. A new word has been loaded.");
+  });
+}
+
+if (revealAnswerBtn) {
+  revealAnswerBtn.addEventListener("click", () => {
+    if (word && gameMessage) {
+      const currentMessage = gameMessage.textContent;
+      gameMessage.textContent = `${currentMessage} The word was ${word}.`;
+      announceToScreenReader(`The word was ${word}.`);
+      revealAnswerBtn.style.display = "none";
+    }
   });
 }
